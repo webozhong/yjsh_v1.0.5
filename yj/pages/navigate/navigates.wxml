@@ -6,7 +6,7 @@
 
   <view wx:for="{{num}}" wx:for-item="i">
     <text wx:if="{{array.p[i]!=''&&i>0}}">{{array.p[i]}}</text>
-    <image src="https://www.webozhong.com/weapp/originals/{{array.img[i]}}" style="width:{{ws}}px;height:{{array.height[i]*ws/array.width[i]}}px" wx:if="{{array.img[i]!='empty.jpg'&&array.img[i]!='img.jpg'}}"></image>
+    <image src="https://www.webozhong.com/originals/{{array.img[i]}}" style="width:{{ws}}px;height:{{array.height[i]*ws/array.width[i]}}px" wx:if="{{array.img[i]!='empty.jpg'&&array.img[i]!='img.jpg'}}"></image>
   </view>
   
 </view>

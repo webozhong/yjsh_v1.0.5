@@ -1,8 +1,8 @@
 var app = getApp();
 var page1 = 0;
-var url = "https://www.webozhong.com/weapp/api.php";
+var url = "https://www.webozhong.com/api";
 var key = true;
-var key2 = true;
+// var key2 = true;
 var pages = 1;
 var GetList = function (that) {
   if (key && page1 < pages) {
@@ -28,11 +28,12 @@ var GetList = function (that) {
         for (var j = 0; j < res.data.jsonObj.length; j++) {
           lists.push(res.data.jsonObj[j]);
         }
-        page1++;
+        
 
         that.setData({
           list: lists,
         });
+        page1++;
       },
       fail: function () {
       }
@@ -79,6 +80,7 @@ var GetList = function (that) {
 
 Page({
   data: {
+    key:true,
     list: [],
     hs: "",
     imgUrls: [],
@@ -91,10 +93,7 @@ Page({
   lower: function () {
     var that = this;
     key = true;
-
     GetList(that);
-
-    console.log(1111111);
 
   },
   onShareAppMessage: function () {
@@ -106,16 +105,15 @@ Page({
   },
  
   onLoad: function (options) {
+    var that = this;
     app.getUserInfo();
     var users = wx.getStorageSync('users');
     var userInfo = wx.getStorageSync('userInfo');
     console.log(wx.getStorageSync('users'),users.openid);
     
-    var that = this;
     // Banner(that);
 
     var h = 0;
-
     //获取屏幕信息  
     wx.getSystemInfo({
       success: function (res) {
