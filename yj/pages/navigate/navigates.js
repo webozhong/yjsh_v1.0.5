@@ -30,7 +30,6 @@ Page({
     wx.request({
       url: 'https://www.webozhong.com/api/index/getarticleinfo',
       data: {
-        act: 1,
         id: that.data.id
       },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT

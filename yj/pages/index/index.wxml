@@ -1,6 +1,9 @@
 
 <!--index.wxml-->
-<scroll-view class="main" scroll-y="{{true}}" lower-threshold="50px" bindscrolltolower="lower" style="height:{{hs}}px" bindscroll="scrollTo" scroll-top="{{scrollTop}}">
+<!--<loading hidden="{{hidden}}" bindChange="loadingChange">
+  加载中...
+</loading>-->
+<scroll-view class="main" scroll-y="{{true}}"  bindscrolltolower="lower" style="height:{{hs}}px" bindscroll="scrollTo" scroll-top="{{scrollTop}}" bindscrolltoupper="refresh" upper-threshold="50px">
 
   <!--回到顶部按钮-->
 

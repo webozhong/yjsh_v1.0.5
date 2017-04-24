@@ -22,13 +22,14 @@ Page({
       that.setData({
         userInfo: userInfo,
         color: "#fff"
-      })     
+      })  
+      
     })
     
-    app.getUserInfo();
-    var userInfo = wx.getStorageSync('userInfo');
-    that.setData({userInfo:userInfo.userInfo});
-    console.log(userInfo);
+    // app.getUserInfo();
+    // var userInfo = wx.getStorageSync('userInfo');
+    // that.setData({userInfo:userInfo.userInfo});
+    // console.log(userInfo);
   },
   //点击跳转
   navToPage(event) {

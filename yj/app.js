@@ -9,9 +9,9 @@ App({
     openid: "",
     session_key: ""
   },
+  
   getUserInfo: function (cb) {
     var that = this;
-    wx.clearStorage();
 
     var users = wx.getStorageSync('users') || {};
     var userInfo = wx.getStorageSync('userInfo') || {};
@@ -21,9 +21,7 @@ App({
     } else {
       wx.login({
         success: res => {
-
-          that.globalData.js_code = res.code
-          console.log(res, that);
+          that.globalData.js_code = res.code; 
           wx.getUserInfo({
             success: res => {
               that.globalData.userInfo = res.userInfo;
@@ -41,7 +39,7 @@ App({
                   js_code: that.globalData.js_code,
                   grant_type: "authorization_code"
                 },
-                success: function (res) {
+                success: res => {
                   that.globalData.openid = res.data.openid;
                   that.globalData.session_key = res.data.session_key;
                   var obj = {};
@@ -49,7 +47,7 @@ App({
                   obj.openid = res.data.openid;
                   obj.session_key = res.data.session_key;
                   wx.setStorageSync('users', obj);
-
+                  
                   // console.log(that.globalData.userInfo);
                   console.log(users, userInfo);
                 },
@@ -62,40 +60,14 @@ App({
 
             }
           })
+        },
+        fail:function(){
+          wx.clearStorage();
         }
       })
     }
 
   }
-
-
-  //   wx.getUserInfo({
-  //   success: function(res) {
-  //     var userInfo = res.userInfo
-  //     var nickName = userInfo.nickName
-  //     var avatarUrl = userInfo.avatarUrl
-  //     var gender = userInfo.gender //性别 0：未知、1：男、2：女 
-  //     var province = userInfo.province
-  //     var city = userInfo.city
-  //     var country = userInfo.country
-  //   }
-  // })
-  // encryptedData 解密后为以下 json 结构，详见加密数据解密算法
-  // {
-  //     "openId": "OPENID",
-  //     "nickName": "NICKNAME",
-  //     "gender": GENDER,
-  //     "city": "CITY",
-  //     "province": "PROVINCE",
-  //     "country": "COUNTRY",
-  //     "avatarUrl": "AVATARURL",
-  //     "unionId": "UNIONID",
-  //     "watermark":
-  //     {
-  //         "appid":"APPID",
-  //     "timestamp":TIMESTAMP
-  //     }
-  // }
 
 })
 
